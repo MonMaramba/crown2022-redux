@@ -7,7 +7,6 @@ import {
 // as actual value you want o access
 export const UserContext = createContext({
   currentUser: null,
-  setCurrentUser: () => null,
 });
 
 // Provider - the actual component
