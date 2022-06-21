@@ -46,7 +46,7 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
-          <CartIcon onClick={cartHandler} />
+          <CartIcon />
         </div>
         {isCartOpen && <CartDropdown />}
       </div>
