@@ -39,7 +39,7 @@ const clearCartItem = (cartItems, cartItemToClear) => {
 };
 
 export const CartContext = createContext({
-  isCartOpen: true,
+  isCartOpen: false,
   setIsCartOpen: () => {},
   cartItems: [],
   addItemToCart: () => {},
@@ -52,10 +52,11 @@ export const CartContext = createContext({
 
 export const CART_ACTION_TYPES = {
   SET_CART_ITEMS: 'SET_CART_ITEMS',
+  SET_IS_CART_OPEN: 'SET_IS_CART_OPEN',
 };
 
 const INITIAL_STATE = {
-  isCartOpen: true,
+  isCartOpen: false,
   cartItems: [],
   cartCount: 0,
   cartTotal: 0,
@@ -69,6 +70,12 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         ...payload,
+      };
+
+    case CART_ACTION_TYPES.SET_IS_CART_OPEN:
+      return {
+        ...state,
+        isCartOpen: payload,
       };
 
     default:
@@ -92,7 +99,7 @@ export const CartProvider = ({ children }) => {
     );
 
     dispatch({
-      type: 'SET_CART_ITEMS',
+      type: CART_ACTION_TYPES.SET_CART_ITEMS,
       payload: {
         cartItems: newCartItems,
         cartTotal: newCartTotal,
@@ -116,9 +123,13 @@ export const CartProvider = ({ children }) => {
     updateCartItemsReducer(newCartItems);
   };
 
+  const setIsCartOpen = (bool) => {
+    dispatch({ type: CART_ACTION_TYPES.SET_IS_CART_OPEN, payload: bool });
+  };
+
   const value = {
-    isCartOpen: true,
-    setIsCartOpen: () => {},
+    isCartOpen,
+    setIsCartOpen,
     addItemToCart,
     cartItems,
     cartCount,
