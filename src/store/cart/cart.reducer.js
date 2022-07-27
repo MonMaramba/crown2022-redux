@@ -22,9 +22,6 @@ export const cartReducer = (state = CART_INITIAL_STATE, action = {}) => {
       };
 
     default:
-      return {
-        ...state,
-        ...payload,
-      };
+      return state;
   }
 };
