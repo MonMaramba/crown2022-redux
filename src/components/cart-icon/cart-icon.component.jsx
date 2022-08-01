@@ -4,6 +4,7 @@ import {
   selectIsCartOpen,
   selectCartCount,
 } from '../../store/cart/cart.selector';
+
 import { setIsCartOpen } from '../../store/cart/cart.action';
 
 import { ReactComponent as ShoppingBagIcon } from '../../assets/shopping-bag.svg';
