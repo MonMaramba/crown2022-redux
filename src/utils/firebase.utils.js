@@ -19,12 +19,14 @@ import {
   getDocs,
 } from 'firebase/firestore';
 
+require('dotenv').config();
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyAuMZKahq5EUJBPhXRHo8y1NKYwKGp33fo',
+  apiKey: process.env.FIREBASE_KEY,
   authDomain: 'crwn2022.firebaseapp.com',
   projectId: 'crwn2022',
   storageBucket: 'crwn2022.appspot.com',
-  messagingSenderId: '654918618246',
+  messagingSenderId: process.env.FB_MSENDER_ID,
   appId: '1:654918618246:web:4de919c728552134231507',
 };
 
